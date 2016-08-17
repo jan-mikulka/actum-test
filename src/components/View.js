@@ -1,13 +1,16 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+import Chip from 'material-ui/Chip';
 import {GridList, GridTile} from 'material-ui/GridList';
 import {blue500, red500, greenA200} from 'material-ui/styles/colors';
 import KeyboardBackspace from 'material-ui/svg-icons/notification/more';
 
 import keyboard from '../keyboard';
+import styles from '../styles';
 
 const initialState = {
-	userInput: ''
+	userInput: '',
+	combinations: []
 }
 
 var CustomCounter = function(min, max) {
@@ -84,6 +87,7 @@ PhoneNumber.prototype.update_combinations = function() {
 function t9(userInput) {
 	var phone_number = new PhoneNumber(userInput)
 	phone_number.update_combinations()
+	return phone_number.combinations
 }
 
 export default class View extends React.Component {
@@ -93,11 +97,15 @@ export default class View extends React.Component {
   }
 
   componentWillMount() {
-  	this.setState(initialState); 
+  	console.log(initialState);
+  	this.setState(initialState);
+  	console.log(this);
+  	debugger;
   }
 
   addNumber(newInput) {
   	let userInput = this.state.userInput + newInput;
+  	this.assignCombinationsToState(userInput);
   	this.setState({
   		userInput  
   	});
@@ -105,28 +113,22 @@ export default class View extends React.Component {
 
   removeNumber() {
   	let userInput = this.state.userInput.slice(0, -1);
+  	this.assignCombinationsToState(userInput);
   	this.setState({
   		userInput
   	});
   }
 
+  assignCombinationsToState(userInput) {
+  	let combinations = t9(userInput);
+  	this.setState({
+  		combinations
+  	});
+  	console.log(combinations);
+  }
+
 
   render() {
-
-		const styles = {
-		  root: {
-		    display: 'flex',
-		    flexWrap: 'wrap',
-		    justifyContent: 'space-around',
-		  },
-		  gridList: {
-		    width: 700,
-		    overflowY: 'auto',
-		    marginBottom: 24,
-		  },
-		};
-
-		
 
 		return(
 		  <div style={{width: '700px'}}>
@@ -152,6 +154,9 @@ export default class View extends React.Component {
 			        />
 			      ))}
 			    </GridList>
+			    <Paper>
+			   
+ 			    </Paper>
 			  </div>
 		  </div>
 		);
