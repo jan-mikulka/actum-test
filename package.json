@@ -1,0 +1,36 @@
+{
+  "name": "actum miniApp",
+  "version": "1.0.0",
+  "description": "Testing App",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-tap-event-plugin": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^5.6.15",
+    "babel-loader": "^5.3.1",
+    "babel-runtime": "^5.6.15",
+    "css-loader": "^0.15.2",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^1.6.0",
+    "json-loader": "^0.5.2",
+    "node-sass": "^3.2.0",
+    "react-hot-loader": "^1.3.0",
+    "sass-loader": "^1.0.2",
+    "style-loader": "^0.12.3",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "scripts": {
+    "dev": "webpack --inline --colors --progress",
+    "start": "node server.js"
+  },
+  "author": "Jan Mikulka",
+  "license": "ISC"
+}
