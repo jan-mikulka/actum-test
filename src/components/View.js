@@ -97,10 +97,7 @@ export default class View extends React.Component {
   }
 
   componentWillMount() {
-  	console.log(initialState);
   	this.setState(initialState);
-  	console.log(this);
-  	debugger;
   }
 
   addNumber(newInput) {
@@ -124,7 +121,6 @@ export default class View extends React.Component {
   	this.setState({
   		combinations
   	});
-  	console.log(combinations);
   }
 
 
@@ -154,8 +150,14 @@ export default class View extends React.Component {
 			        />
 			      ))}
 			    </GridList>
-			    <Paper>
-			   
+			    <Paper style={styles.root}>
+			   		{this.state.combinations.map(function(combination) { 
+			    	return(
+			    		<Chip style={styles.chip}>
+			    			{combination}
+			    		</Chip>
+			    	);
+			    }, this)}
  			    </Paper>
 			  </div>
 		  </div>
