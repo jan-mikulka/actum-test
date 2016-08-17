@@ -84,7 +84,6 @@ PhoneNumber.prototype.update_combinations = function() {
 function t9(userInput) {
 	var phone_number = new PhoneNumber(userInput)
 	phone_number.update_combinations()
-	console.log(phone_number.combinations)
 }
 
 export default class View extends React.Component {
@@ -98,15 +97,16 @@ export default class View extends React.Component {
   }
 
   addNumber(newInput) {
+  	let userInput = this.state.userInput + newInput;
   	this.setState({
-  		userInput: this.state.userInput + newInput 
+  		userInput  
   	});
-  	t9(this.state.userInput);
   }
 
   removeNumber() {
+  	let userInput = this.state.userInput.slice(0, -1);
   	this.setState({
-  		userInput: this.state.userInput.slice(0, -1)
+  		userInput
   	});
   }
 
